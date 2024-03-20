@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Buttons from '../../components/buttons/Buttons';
 import User from '../user/User';
 import Example from '../../components/example/Example';
@@ -14,17 +14,17 @@ const MainPage = () => {
     const [show, setShow] = useState(false)
     const [tasks, setTasks] = useState([
         {
-            id:1 ,
+            id: 1,
             title: 'coding',
             completed: false
         },
         {
-            id:4,
+            id: 4,
             title: 'eat',
             completed: false
         },
         {
-            id:5,
+            id: 5,
             title: 'sleep',
             completed: false
         }
@@ -37,9 +37,9 @@ const MainPage = () => {
         setInputTask(event.target.value)
     }
 
-    const handleAdd = ()=> {
-        setTasks(prev=>[...prev, {
-            id: tasks.length===0 ? 1 : tasks[tasks.length-1].id+1,
+    const handleAdd = () => {
+        setTasks(prev => [...prev, {
+            id: tasks.length === 0 ? 1 : tasks[tasks.length - 1].id + 1,
             title: inputTask,
             completed: false
         }])
@@ -47,8 +47,8 @@ const MainPage = () => {
 
     const handleDone = (id) => {
         console.log(id);
-        tasks.map(task=>{
-            if(task.id===id) {
+        tasks.map(task => {
+            if (task.id === id) {
                 return task.completed = !task.completed
             }
         })
@@ -56,6 +56,7 @@ const MainPage = () => {
     }
 
     const handleEdit = (editedTodo) => {
+        //для комита
         setTasks(tasks.map(task => {
             if (task.id === editedTodo.id) {
                 return editedTodo;
@@ -64,23 +65,18 @@ const MainPage = () => {
         }));
     };
 
-
-
-
     const handleDelete = (id) => {
-        setTasks(tasks.filter(task=>task.id!==id))
+        setTasks(tasks.filter(task => task.id !== id))
     }
 
-
-    useEffect(()=> {
+    useEffect(() => {
         console.log('useEffect');
-    },[tasks])
-
+    }, [tasks])
 
 
     return (
         <>
-            { show &&
+            {show &&
                 <Modal handleShow={handleShow}
                        onChangeInputTask={onChangeInputTask}
                        handleAdd={handleAdd}
