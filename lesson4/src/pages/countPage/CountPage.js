@@ -14,7 +14,7 @@ const CountPage = () => {
 
     return (
         <div>
-            <p>COunt: {count}</p>
+            <p>Count: {count}</p>
             <Button title={'increment'} action={increment}/>
             <Button title={'decrement'} action={decrement}/>
         </div>

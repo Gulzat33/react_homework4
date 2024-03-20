@@ -11,10 +11,7 @@ import Button from '../../components/button/Button';
 
 const MainPage = () => {
     const navBar = ['Главная', 'Контакты', 'О нас', 'О нас']
-    // let show = false
-    // console.log(show, 'start');
     const [show, setShow] = useState(false)
-    // console.log(show, 'showshowshowshow');
     const [tasks, setTasks] = useState([
         {
             id:1 ,
@@ -32,10 +29,7 @@ const MainPage = () => {
             completed: false
         }
     ])
-    // console.log(tasks);
     const handleShow = () => {
-        // show = true
-        // console.log(show, ' end');
         setShow(!show)
     }
     const [inputTask, setInputTask] = useState('')
@@ -61,9 +55,15 @@ const MainPage = () => {
         setTasks([...tasks])
     }
 
-    const handleEdit=(editTodo) => {
-        console.log(editTodo)
-    }
+    const handleEdit = (editedTodo) => {
+        setTasks(tasks.map(task => {
+            if (task.id === editedTodo.id) {
+                return editedTodo;
+            }
+            return task;
+        }));
+    };
+
 
 
 
@@ -71,9 +71,6 @@ const MainPage = () => {
         setTasks(tasks.filter(task=>task.id!==id))
     }
 
-    // const a= [1,2,3,4,5]
-    // const b= [5,1,8,9,4,1,2,3,4,5]
-    // console.log([...a,...b]);
 
     useEffect(()=> {
         console.log('useEffect');
@@ -88,9 +85,6 @@ const MainPage = () => {
                        onChangeInputTask={onChangeInputTask}
                        handleAdd={handleAdd}
                 >
-                    {/*<input type="text"*/}
-                    {/*onChange={(event=> setInputValue(event.target.value))}*/}
-                    {/*/>*/}
                 </Modal>
             }
 
@@ -102,15 +96,6 @@ const MainPage = () => {
             />
             <Buttons/>
             <Button title={'Открыть'} action={handleShow}/>
-            {/*<Header navBar={navBar}/>*/}
-            {/*<User name={'Bakyt'} age={18}/>*/}
-            {/*<User name={'Kuban'} age={30}/>*/}
-            {/*<User name={'Ermek'} age={10}/>*/}
-            {/*<Input/>*/}
-            {/*<Example>*/}
-            {/*    <p style={{color: 'red', fontSize: '20px'}} >User</p>*/}
-            {/*    <p>Age</p>*/}
-            {/*</Example>*/}
         </>
     );
 };
